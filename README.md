@@ -40,9 +40,9 @@ Develop SQL-based analytical solutions to generate meaningful business insights 
 
 **Analytics Focus Areas**
 The reporting and analysis layer is designed to provide detailed insights into:
-Customer Behavior
-Analyze customer activity, purchasing patterns, segmentation, and contribution to revenue.
-Product Performance
+Customer Behavior - 
+analyze customer activity, purchasing patterns, segmentation, and contribution to revenue.
+Product Performance -
 Evaluate product-level sales, category performance, top-performing products, and product trends.
 Sales Trends
 Examine sales growth, order patterns, seasonal trends, and key performance indicators over time.
