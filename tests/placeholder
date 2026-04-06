@@ -257,6 +257,57 @@ SELECT DISTINCT ERP_Category FROM bronze.erp_px_cat_g1v2
 SELECT DISTINCT ERP_Maintenance FROM bronze.erp_px_cat_g1v2
 
 
+=== Gold layer data quality checks --
+
+-- Validating gold.sales fact table
+
+-- Check if there are any nulls appeared after joining dim tables
+SELECT
+Product_Id,
+Customer_Key
+FROM gold.fact_sales
+WHERE Product_Id IS NULL OR Customer_Key IS NULL
+
+-- -- Check foreign key integrity in customers table
+SELECT * 
+FROM gold.fact_sales sa
+LEFT JOIN gold.dim_customers cr
+ON cr.Customer_key = sa.Customer_Key
+WHERE cr.customer_Key IS NULL
+
+-- quality checks in gold customer table --
+SELECT * FROM gold.dim_customers;
+
+SELECT
+COUNT(*)
+FROM gold.dim_customers
+GROUP BY Customer_ID
+HAVING COUNT(*) > 1
+
+SELECT Customer_ID
+FROM gold.dim_customers
+WHERE Customer_ID IS NULL
+
+SELECT DISTINCT Gender
+FROM gold.dim_customers
+
+-- -- Check foreign key integrity in products table
+SELECT * 
+FROM gold.fact_sales sa
+LEFT JOIN gold.dim_products pr
+ON pr.product_key = sa.Product_Key
+WHERE pr.product_key IS NULL
+
+SELECT * FROM gold.dim_customers;
+SELECT * FROM gold.dim_products;
+
+
+
+
+
+
+
+
 
 
 
